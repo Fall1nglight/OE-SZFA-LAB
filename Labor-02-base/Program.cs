@@ -12,6 +12,16 @@ internal class Program
 
         Shape[] shapes = { circle1, circle2, rectangle1, rectangle2, sqare };
 
+        #region orai_munka
+
+        // korai köktés miatt ha a square-nek állítasz width-et
+        // akkor nem fogja beállítani a width+height-et
+        // ezért késői kötést kell alkalmazni virtual + override
+        Rectangle[] test = { new Rectangle(10, 12, false, "red"), new Square(10, false, "green") };
+        test[1].Width = 100;
+
+        #endregion
+
         #region 1. exercise
         Console.WriteLine("[1] Shapes in array");
 
@@ -62,6 +72,7 @@ internal class Program
 
         Console.WriteLine(shapes[largestIdx]);
         #endregion
+
 
         void MakeShapeHoleyIfAreaBiggerThanPerimeter(Shape shape)
         {

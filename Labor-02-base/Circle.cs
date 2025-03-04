@@ -26,6 +26,14 @@ public class Circle : Shape
         return $"{baseStr}circle";
     }
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is not Circle temp)
+            return false;
+
+        return _radius == temp._radius && Color == temp.Color && IsHoley == temp.IsHoley;
+    }
+
     // properties
     public int Radius
     {

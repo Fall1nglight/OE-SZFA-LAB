@@ -12,7 +12,6 @@ public class Square : Rectangle
         : base(height, height, color) { }
 
     // methods
-
     public override double Perimeter() => 4 * base.Height;
 
     public override double Area() => Math.Pow(base.Height, 2);
@@ -23,5 +22,27 @@ public class Square : Rectangle
         return $"{baseStr}square";
     }
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is not Square temp)
+            return false;
+
+        return Height == temp.Height
+            && Width == temp.Width
+            && Color == temp.Color
+            && IsHoley == temp.IsHoley;
+    }
+
     // properties
+    public override int Height
+    {
+        get => base.Height;
+        set => base.Height = base.Width = value;
+    }
+
+    public override int Width
+    {
+        get => base.Width;
+        set => base.Width = base.Height = value;
+    }
 }

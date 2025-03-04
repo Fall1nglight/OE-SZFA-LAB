@@ -28,14 +28,25 @@ public class Rectangle : Shape
         return $"{baseStr}rectangle";
     }
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is not Rectangle temp)
+            return false;
+
+        return _height == temp._height
+            && _width == temp._width
+            && Color == temp.Color
+            && IsHoley == temp.IsHoley;
+    }
+
     // properties
-    public int Height
+    public virtual int Height
     {
         get => _height;
         set => _height = value;
     }
 
-    public int Width
+    public virtual int Width
     {
         get => _width;
         set => _width = value;

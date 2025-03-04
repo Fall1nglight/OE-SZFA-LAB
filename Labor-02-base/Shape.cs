@@ -26,10 +26,20 @@ public abstract class Shape
     public override string ToString() =>
         $"color: {_color} - {(_isHoley ? "holey" : "not holey")} - perimeter: {Perimeter()} - area: {Area()} - shape: unique";
 
+    public override bool Equals(object? obj)
+    {
+        if (obj is not Shape temp)
+            return false;
+
+        return Color == temp.Color && IsHoley == temp.IsHoley;
+    }
+
     // properties
     public string Color
     {
         get => _color;
         set => _color = value ?? throw new ArgumentNullException(nameof(value));
     }
+
+    protected bool IsHoley => _isHoley;
 }
